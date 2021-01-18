@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Youtube Channel Subscriber List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">INFO</h1>
+  <ul>
+    <% result.forEach(function (Data) { %>
+        <%if(Data.id==ID){%>
+            <center>
+                <h2>Channel Name :<%=Data.snippet.title%></h2>
+                <img value  src="<%=Data.snippet.thumbnails.medium.url%>"/>
+                <div>
+                    <h3>About the channel</h3>
+                    <p>
+                        
+                        <%=Data.snippet.description%>
+                    </p>
+                    <p>
+                       Published At : <%=Data.snippet.publishedAt%>
+                        
+                    </p>
+                    <p>
+                        Total no of videos : <%=Data.contentDetails.totalItemCount%>
+                         
+                     </p>
+                     
+
+                </div>
+                <a target="_blank" href="https://www.youtube.com/channel/<%=Data.snippet.resourceId.channelId%>">Visit</a>
+            </center>
+            
+        <%}%>
+        
+      <% }) %>
+    
+    
+  </ul>
+  </div>
+</body>
+</html>

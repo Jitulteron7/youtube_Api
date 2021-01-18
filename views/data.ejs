@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Youtube Channel Subscriber List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+      <h2>Your Channel Name:<%=subscriptions[0].subscriberSnippet.title%></h2>
+      <img src="<%=subscriptions[0].subscriberSnippet.thumbnails.default.url%>" alt="">
+      <div>
+          <p>
+              <%=subscriptions[0].subscriberSnippet.description%>
+          </p>
+      </div>
+    <h2 style="text-align: center;">Your Subscribers List</h2>
+  <ul>
+    <form action="/details" method="get">
+        <% subscriptions.forEach(function (subscription) { %>
+            <button type="submit" name="buttonID" value=<%=subscription.id%>>
+              <a target="_blank" ><img value  src="<%=subscription.snippet.thumbnails.default.url%>"/></a>
+            </button>
+            
+          <% }) %>
+    </form>
+    <a target="_blank" href="https://www.youtube.com/channel/<%=subscriptions[0].snippet.channelId%>"> Visit Your Channel</a>
+  </ul>
+  <div>
+      <p>
+          NO of Subscribed Channel(s) :<%=pageInfo.pageInfo.totalResults%>
+      </p>
+  </div>
+  </div>
+</body>
+</html>
